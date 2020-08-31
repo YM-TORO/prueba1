@@ -1,0 +1,89 @@
+<p>cuerpo1 works!</p>
+<span>
+    El valor de mostrar es de: {{mostrar}}
+</span>
+<button class="btn btn-info" (click)="clickear(); mostrar= !mostrar">Mostrar/ Ocultar Parrafo 1</button>
+directiva ngIf
+<p>
+    <b> Cantidad de veces haciendo clic:</b> {{nroveces}}
+</p>
+<p *ngIf="mostrar">
+    Este es el parrafo 1</p>
+
+<p *ngIf="true">Este es el parrafo 2 </p>
+
+<div *ngIf="mostrar; then bloqueVerdadero else bloqueFalso"></div>
+<ng-template #bloqueVerdadero>Condición cuando estado es verdadero.</ng-template>
+<ng-template #bloqueFalso>Condición cuando estado es falso..</ng-template>
+<br>
+<div *ngIf="valor >=3; then valormayorigual else valormenor"></div>
+    <ng-template #valormenor>El Valor es menor de 3</ng-template>
+    <ng-template #valormayorigual>El Valor es mayor o igual a 3</ng-template>
+
+<br>
+<h2>Departamentos</h2>
+<ul *ngFor="let depto of deptos">
+    <li>{{ depto }}</li>
+
+</ul>
+<br>
+<table class="table table-bordered">
+    <tr *ngFor="let item of deptos">
+        <td>{{ item }}</td>
+
+    </tr>
+</table>
+<h2>Departamento Destino</h2>
+<select name="" id="">
+    <option *ngFor="let depto of deptos" value={{depto}}>{{depto}}</option>
+</select>
+<table>
+    <thead>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>Edad</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pers of persona">
+            <td>{{pers.nombre}}</td>
+
+           <td>{{pers.ciudad}}</td>
+
+           <td>{{pers.edad}}</td>
+        </tr>
+    </tbody>
+</table>
+ngStyle
+<ul *ngFor="let oper of persona">
+    <li [ngStyle]="{'background-color':oper.ciudad === 'CC' ? 'gray' : 'yellow' }">
+        {{oper.nombre + ' '+ oper.edad}}
+    </li>
+</ul>
+con ngClass
+<ul *ngFor="let oper of persona">
+    <li [ngClass]="{
+        'text-success':oper.ciudad == 'CC',
+        'text-primary':oper.ciudad === 'MC',
+        'text-danger':oper.ciudad === 'SJ',
+        'text-warning':oper.ciudad === 'PB',
+        'text-info':oper.ciudad === 'BA'
+      }">
+        {{oper.nombre + ' '+ oper.edad}}
+    </li>
+</ul>
+Directiva ngSwitchCase
+<ul *ngFor="let oper of persona" [ngSwitch]="oper.ciudad">
+    <li *ngSwitchCase="'MC'" class="text-info">
+        {{oper.nombre + ' '+ oper.ciudad}}
+    </li>
+    <li *ngSwitchCase="'SJ'" class="text-warning">
+        {{oper.nombre + ' '+ oper.ciudad}}
+    </li>
+    <li *ngSwitchCase="'CC'" class="text-danger">
+        {{oper.nombre + ' '+ oper.ciudad}}
+    </li>
+    <li *ngSwitchCase="'PB'" class="text-success">
+        {{oper.nombre + ' '+ oper.ciudad}}
+    </li>
+</ul>
+

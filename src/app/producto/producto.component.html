@@ -1,0 +1,44 @@
+<div class="container ">
+<form [formGroup]="formproducto" (ngSubmit)="guardar($event)">
+  <div class="form-group">
+     <label for="nombre">Referencia</label>
+     <input type="text" class="form-control" id="referencia" formControlName="referencia" >
+    <div *ngIf="formproducto.get('referencia').errors && formproducto.get('referencia').touched">
+        <small id="referenciaHelp" class="text-danger" *ngIf="formproducto.get('referencia').hasError('required')">La referencia es obligatorio</small>
+        <small id="referenciaHelp" class="text-danger" *ngIf="formproducto.get('referencia').hasError('minlength')">La referencia debe tener mínimo 4 caracteres</small>
+        Cantidad de caracteres digitados {{ formusuario.get('usuario').value.length }}/20
+    </div> 
+  </div>
+
+  <div class="form-group">
+     <label for="descripcion">Descripción</label>
+     <input type="text" class="form-control" id="descripcion" formControlName="descripcion">
+     <div *ngIf="formproducto.get('descripcion').errors && formproducto.get('descripcion').touched">
+         <small id="descripcionHelp" class="text-danger" *ngIf="formproducto.get('descripcion').hasError('required')">El tipo es obligatorio</small>
+         <small id="descripcionHelp" class="text-danger" *ngIf="formproducto.get('descripcion').hasError('minlength')">El tipo debe tener mínimo 10 caracteres</small>
+         Cantidad de caracteres digitados {{ forproducto.get('producto').value.length }}/30
+    </div> 
+  </div>
+
+  <div class="form-group">
+     <label for="text">Precio Unitario</label>
+     <input type="number" class="form-control" id="precio" formControlName="precio">
+     <div *ngIf="formproducto.get('precio').errors && formproducto.get('precio').touched">
+        <small id="precioHelp" class="text-danger" *ngIf="formproducto.get('precio').hasError('required')">El tipo es obligatorio</small>
+        <small id="precioHelp" class="text-danger" *ngIf="formproducto.get('precio').hasError('minlength')">El tipo debe tener mínimo 5 caracteres</small>
+    </div> 
+  </div>
+
+   <div class="form-group">
+     <label for="text">Existencia</label>
+     <input type="text" class="form-control" id="existencia" formControlName="existencia">
+     <div *ngIf="formproducto.get('existencia').errors && formproducto.get('existencia').touched">
+        <small id="extistenciaHelp" class="text-danger" *ngIf="formproducto.get('existencia').hasError('required')">El tipo es obligatorio</small>
+        <small id="extistenciaHelp" class="text-danger" *ngIf="formproducto.get('existencia').hasError('minlength')">El tipo debe tener mínimo 10 caracteres</small>
+    </div> 
+  </div>
+
+  <button  [disabled]="formproducto.invalid" type="submit" (click)="getDatos()" class="btn btn-primary">Agregar</button>
+</form>
+</div>
+

@@ -1,0 +1,53 @@
+<div clas="container ">
+ <form [formGroup]="formusuario" (ngSubmit)="guardar($event)">
+       <div class="form-group">
+         <label>Usuario</label>
+         <input type="text" class="form-control" id="usuario" formControlName="usuario">
+         <!-- con touched (si al menos lo  ha tocado y hubo error de validación) con este div - que no es necesario pero es buena práctica -->
+         <div *ngIf="formusuario.get('usuario').errors && formusuario.get('usuario').touched">
+             <small id="usuarioHelp" class="text-danger" *ngIf="formusuario.get('usuario').hasError('required')">El usuario es obligatorio</small>
+             <small id="usuarioHelp" class="text-danger" *ngIf="formusuario.get('usuario').hasError('minlength')">El usuario debe tener mínimo 4 caracteres</small>
+             Cantidad de caracteres digitados {{ formusuario.get('usuario').value.length }}/80
+         </div> 
+       </div>
+
+       <div class="form-group">
+            <label>Nombre</label>
+            
+           <input type="text" class="form-control" id="nombre" formControlName="nombre">
+           <div *ngIf="formusuario.get('nombre').errors && formusuario.get('nombre').touched">
+             <small id="nombreHelp" class="text-danger" *ngIf="formusuario.get('nombre').hasError('required')">El nombre es obligatorio </small>
+             <small id="nombreHelp" class="text-danger" *ngIf="formusuario.get('nombre').hasError('minlength')">El usuario debe tener mínimo 3 caracteres</small>
+           </div>
+       </div>
+       <div class="form-group">
+           <label>Contraseña o Clave</label>
+           <input type="password" class="form-control" id="nombre" formControlName="clave">
+          <div *ngIf="formusuario.get('clave').errors && formusuario.get('clave').touched">
+             <small id="claveHelp" class="text-danger" *ngIf="formusuario.get('clave').hasError('required')">La clave es obligatoria </small>
+             <small id="claveHelp" class="text-danger" *ngIf="formusuario.get('clave').hasError('minlength')">La clave debe tener mínimo 6 caracteres</small>
+         </div>
+      </div>
+       <div class="form-group">
+           <label>Email</label>
+           <input type="text" class="form-control" id="email" formControlName="email">
+           <div *ngIf="formusuario.get('email').errors && formusuario.get('email').touched">
+               <small id="usuarioHelp" class="text-danger" *ngIf="formusuario.get('email').hasError('required')">El email es obligatorio </small>
+           </div>
+       </div>
+       <div class="form-group">
+           <label>Rol o Función</label>
+          <select formControlName="rol">
+             <option value="0" disabled selected>Seleccione un rol</option>
+             <option value="1">Administrador</option>
+             <option value="2">Usuario</option>
+         </select>
+       </div>
+        <div class="form-group">
+            <label>Género o Sexo</label><br>
+            <input type="radio" name="genero" formControlName="genero" value="Masculino"> Masculino<br>
+            <input type="radio" name="genero" formControlName="genero" value="Femenino" > Femenino
+       </div>
+     <button [disabled]="formusuario.invalid" type="submit" (click)="getDatos()" class="btn btn-warning">Guardar</button> <br>
+  </form>
+</div>
