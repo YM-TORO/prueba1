@@ -1,7 +1,16 @@
 <div class="container ">
 <form [formGroup]="formproducto" (ngSubmit)="guardar($event)">
+<div class="form-group">
+     <label for="nombre">Nombre</label>
+     <input type="text" class="form-control" id="nombre" formControlName="nombre" >
+    <div *ngIf="formproducto.get('referencia').errors && formproducto.get('nombre').touched">
+        <small id="nombreHelp" class="text-danger" *ngIf="formproducto.get('nombre').hasError('required')">El nombre es obligatorio</small>
+        <small id="nombreHelp" class="text-danger" *ngIf="formproducto.get('nombre').hasError('minlength')">El nombredebe tener mínimo 5 caracteres</small>
+    </div> 
+  </div>
+
   <div class="form-group">
-     <label for="nombre">Referencia</label>
+     <label for="referencia">Referencia</label>
      <input type="text" class="form-control" id="referencia" formControlName="referencia" >
     <div *ngIf="formproducto.get('referencia').errors && formproducto.get('referencia').touched">
         <small id="referenciaHelp" class="text-danger" *ngIf="formproducto.get('referencia').hasError('required')">La referencia es obligatorio</small>
@@ -30,15 +39,15 @@
   </div>
 
    <div class="form-group">
-     <label for="text">Existencia</label>
-     <input type="text" class="form-control" id="existencia" formControlName="existencia">
+     <label for="number">Existencia</label>
+     <input type="number" class="form-control" id="existencia" formControlName="existencia">
      <div *ngIf="formproducto.get('existencia').errors && formproducto.get('existencia').touched">
         <small id="extistenciaHelp" class="text-danger" *ngIf="formproducto.get('existencia').hasError('required')">El tipo es obligatorio</small>
         <small id="extistenciaHelp" class="text-danger" *ngIf="formproducto.get('existencia').hasError('minlength')">El tipo debe tener mínimo 10 caracteres</small>
     </div> 
   </div>
 
-  <button  [disabled]="formproducto.invalid" type="submit" (click)="getDatos()" class="btn btn-primary">Agregar</button>
+  <button  [disabled]="formproducto.invalid" type="agregar" (click)="getDatos()" class="btn btn-success">Agregar</button>
 </form>
 </div>
 

@@ -7,6 +7,7 @@ export class APIService {
 
   constructor(private http: HttpClient) { 
 
+    
   }
   getAPI(){
     return this.http.get('https://jsonplaceholder.typicode.com/photos')

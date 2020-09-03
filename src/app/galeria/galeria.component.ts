@@ -14,15 +14,23 @@ export class GaleriaComponent implements OnInit {
   constructor(private servapi:APIService) { }
 
   ngOnInit(): void {
-    this.servapi.getAPI()
-    .subscribe(
-      (data)=>{
-        this.apiFotos= data [''];
-      },
-      (error)=>{
-        console.error(error);
-      }
-    );
+    
+    this.servapi.getAPI().subscribe((data: any[])=>{
+      this.apiFotos = data;
+    })
+
+  }
+  // ngOnInit(): void {
+    
+  //   this.servapi.getAPI()
+  //   .subscribe(
+  //     (data)=>{
+  //       this.apiFotos= data [''];
+  //     },
+  //     (error)=>{
+  //       console.error(error);
+  //     }
+  //   );
     //this.contactsService.getContacts.subscribe(data => {this.contacts = data});
-  } 
+  // } 
 }

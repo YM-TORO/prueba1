@@ -11,12 +11,12 @@ export class ProductoComponent implements OnInit {
 
    // Definir formulario con los mismos datos del arvcchovo html
    formproducto = new FormGroup({
+    nombre: new FormControl('', [Validators.required, Validators.minLength(5)]),
     referencia: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    descripcion: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    descripcion: new FormControl('', [Validators.required, Validators.minLength(8)]),
     precio: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    existencia: new FormControl('', [Validators.required, Validators.minLength(10)]),
-    agregar: new FormControl('', [Validators.required]),
-    
+    existencia: new FormControl('', [Validators.required, Validators.minLength(1)]),
+   
   });
   constructor() { }
 
